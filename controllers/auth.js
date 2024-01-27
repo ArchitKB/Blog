@@ -36,7 +36,7 @@ export const register = async (req, res) => {
 
     res.status(201).json(userSaved);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(400).json({ error: error.message });
   }
 };
 
@@ -70,6 +70,6 @@ export const login = async (req, res) => {
 
     res.status(200).send({ sessionToken, requiredUser });
   } catch (error) {
-    return res.status(500).send({ error: error.message });
+    return res.status(500).json({ error: error.message });
   }
 };
