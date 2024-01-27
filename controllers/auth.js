@@ -16,7 +16,7 @@ export const register = async (req, res) => {
       occupation,
     } = req.body;
 
-    const salt = bcrypt.genSalt();
+    const salt = await bcrypt.genSalt();
     const passwordHash = await bcrypt.hash(password, salt);
 
     const newUser = new user({
@@ -44,7 +44,7 @@ export const register = async (req, res) => {
 
 export const login = async (req, res) => {
   try {
-    const { email, password } = req.bdoy;
+    const { email, password } = req.body;
 
     const requiredUser = await user.findOne({ email: email });
 
@@ -52,7 +52,10 @@ export const login = async (req, res) => {
       return res.status(400).json({ msg: "Requested user does not exist" });
     }
 
-    const isPasswordValid = bcrypt.compare(password, requiredUser.password);
+    const isPasswordValid = await bcrypt.compare(
+      password,
+      requiredUser.password
+    );
 
     if (!isPasswordValid) {
       return res.status(400).json({ msg: "Wrong password for requested user" });
