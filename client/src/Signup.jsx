@@ -70,6 +70,7 @@ function Signup(){
           });
 
           console.log(res.data);
+          alert("Signed Up successfully");
           //navigate('/login');
 
 
