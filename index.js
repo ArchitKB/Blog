@@ -11,6 +11,11 @@ import { fileURLToPath } from "url";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
 import { register } from "./controllers/auth.js";
+import { verifyToken } from "./middleware/auth.js";
+import { createPost } from "./controllers/posts.js";
+import User from "./models/user.js";
+import Post from "./models/Post.js";
+import { users, posts } from "./data/index.js";
 
 //configuration
 const __filename = fileURLToPath(import.meta.url);
@@ -21,17 +26,11 @@ const app = express();
 app.use(express.json());
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
-app.use(morgan("comman"));
+app.use(morgan("common"));
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
-import { register } from "./controllers/auth.js";
-import { verifyToken } from "./middleware/auth.js";
-import { createPost } from "./controllers/posts.js";
-import User from "./models/user.js";
-import Post from "./models/Post.js";
-import { users, posts } from "./data/index.js";
 
 // File Storage
 
@@ -49,9 +48,10 @@ const upload = multer({ storage });
 /* Routes with data (pictures)*/
 app.post("/auth/register", upload.single("picture"), register);
 app.post("/posts", verifyToken, upload.single("picture"), createPost);
+
 /*routes*/
 app.use("/auth", authRoutes);
-app.use("/users", usersRoutes);
+app.use("/users", userRoutes);
 app.use("/posts", postRoutes);
 
 //MONGOOSE SETUP
