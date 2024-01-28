@@ -1,4 +1,4 @@
-import Dashboard from "./Dashboard.jsx";
+import Dashboard from "./Pages/Dashboard/Dashboard.jsx";
 import Header from "./DashboardEle/Header.jsx";
 import Login from "./Pages/Login/Login.jsx";
 import Signup from "./Pages/Signup/Signup.jsx";

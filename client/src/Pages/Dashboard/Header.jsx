@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import logo from '../../public/logo192.png';
 import './Dashboard.css';
 
 function Header(){
@@ -13,7 +14,7 @@ function Header(){
 };
 
 function Icon () {
-    return( <img src='../../public/logo192.png' />);
+    return( <img src={logo} />);
 }
 
 function Notifications () {
