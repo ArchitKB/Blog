@@ -30,7 +30,11 @@ function Feed(){
         fetchPost();
     }, []);
 
-    const postsArray = posts.map((post, index) => (<Post key = {index} userName = {post.firstName + ' ' + post.lastName}  description = {post.description}/>));
+    const userId = JSON.parse(localStorage.getItem('user'));
+
+    
+    const postsArray = posts.map((post, index) => (<Post key = {index} userName = {post.firstName + ' ' + post.lastName}  description = {post.description} likes={Object.keys(post.likes).length} is_liked={post.likes.userId} />));
+
 
     return(
         <ul>
@@ -46,6 +50,8 @@ function Post(props){
     return(<li>
         <h1>{userName}</h1>
         <p>{description}</p>
+        <p>Likes: {props.likes}</p>
+        <p>{props.is_liked === undefined? false:true}</p>
     </li>);
 }
 
