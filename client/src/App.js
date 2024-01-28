@@ -9,7 +9,7 @@ import Landing from "./Pages/Landing/Landing.jsx";
 
 function App() {
   const [user, setUser] = useState({});
-  const[token,setToken] = useState({});
+  const[token,setToken] = useState("");
   const storedTheme = localStorage.getItem("theme");
   const [thememode, setThememode] = useState(storedTheme || "light");
   const toggle = () => {
@@ -22,22 +22,22 @@ function App() {
     document.querySelector("html").classList.remove("light", "dark");
     document.querySelector("html").classList.add(thememode);
   }, [thememode]);
-  useEffect(() => {
-    const check = async () => {
-      try {
-        const loggedInUser = localStorage.getItem("user");
-        if (loggedInUser) {
-          console.log(loggedInUser);
-          const foundUser = JSON.parse(loggedInUser);
-          console.log("found user", foundUser);
-          await setUser(foundUser);
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    check();
-  }, [user._id]);
+  // useEffect(() => {
+  //   const check = async () => {
+  //     try {
+  //       const loggedInUser = localStorage.getItem("user");
+  //       if (loggedInUser) {
+  //         console.log(loggedInUser);
+  //         const foundUser = JSON.parse(loggedInUser);
+  //         console.log("found user", foundUser);
+  //         await setUser(foundUser);
+  //       }
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
+  //   check();
+  // }, [user._id]);
   return (
     <>
       <BrowserRouter>

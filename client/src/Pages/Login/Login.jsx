@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from 'react-router-dom';
 
 
-function Login(){
+function Login({user,setUser,token,setToken}){
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
 
@@ -29,6 +29,11 @@ function Login(){
             password
         })
         console.log(res.data);
+        setUser(res.data.requiredUser);
+        // setToken(res.data.sessionToken);
+        localStorage.clear();
+        localStorage.setItem('user',JSON.stringify(res.data.requiredUser));
+        localStorage.setItem('token',JSON.stringify(res.data.sessionToken));
         alert("Logged in successfully");
        }
        catch(err){
