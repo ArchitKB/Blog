@@ -1,50 +1,84 @@
-import Login from "./Login.jsx";
+import Dashboard from "./Dashboard.jsx";
+import Header from "./DashboardEle/Header.jsx";
+// import Login from "./Login.jsx";
 import Signup from "./Signup.jsx";
-import React, { useState,useEffect } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ToggleBtn from "./ToggleBtn.jsx";
 
 function App() {
-  const [user,setUser]=useState({});
-  const storedTheme = localStorage.getItem('theme');
-  const [thememode, setThememode] = useState(storedTheme || 'light');
+  const [user, setUser] = useState({});
+  const storedTheme = localStorage.getItem("theme");
+  const [thememode, setThememode] = useState(storedTheme || "light");
   const toggle = () => {
-    const newTheme = thememode === 'light' ? 'dark' : 'light';
+    const newTheme = thememode === "light" ? "dark" : "light";
     setThememode(newTheme);
-    console.log(newTheme)
-    localStorage.setItem('theme', newTheme);
+    console.log(newTheme);
+    localStorage.setItem("theme", newTheme);
   };
   useEffect(() => {
-    document.querySelector('html').classList.remove('light', 'dark');
-    document.querySelector('html').classList.add(thememode);
+    document.querySelector("html").classList.remove("light", "dark");
+    document.querySelector("html").classList.add(thememode);
   }, [thememode]);
-  useEffect(()=>{
-    const check=async()=>{
-      try{
+  useEffect(() => {
+    const check = async () => {
+      try {
         const loggedInUser = localStorage.getItem("user");
         if (loggedInUser) {
           console.log(loggedInUser);
           const foundUser = JSON.parse(loggedInUser);
-          console.log("found user",foundUser  )
+          console.log("found user", foundUser);
           await setUser(foundUser);
         }
-      }catch(err){
-        console.log(err)
+      } catch (err) {
+        console.log(err);
       }
-    }
-    check()
-  },[user._id])
+    };
+    check();
+  }, [user._id]);
   return (
     <>
-    <BrowserRouter>
-    <Routes>
-    <Route path="/" element={<Login user={user} setUser={setUser} thememode={thememode} toggle={toggle}/>}/>
-    <Route path="/login" element={<Login user={user} setUser={setUser} thememode={thememode} toggle={toggle}/>}/>
-    <Route path="/signup" element={<Signup user={user} setUser={setUser} thememode={thememode} toggle={toggle}/>}/>
-    <Route path="/btn" element={<ToggleBtn thememode={thememode} toggle={toggle}/>}/>
-    </Routes>
-    </BrowserRouter>
-    
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Login
+                user={user}
+                setUser={setUser}
+                thememode={thememode}
+                toggle={toggle}
+              />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <Login
+                user={user}
+                setUser={setUser}
+                thememode={thememode}
+                toggle={toggle}
+              />
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <Signup
+                user={user}
+                setUser={setUser}
+                thememode={thememode}
+                toggle={toggle}
+              />
+            }
+          />
+          <Route
+            path="/btn"
+            element={<ToggleBtn thememode={thememode} toggle={toggle} />}
+          />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
