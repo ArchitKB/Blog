@@ -38,8 +38,14 @@ body{
     background-color: #FFA447;
     padding:1vw;
     border-radius: 0.5vw;
+    
 }
 .button:hover{
     cursor:pointer;
     background-color: #FFBB64;
+}
+.link{
+    text-decoration: none;
+    color:white;
+    font-size:1vw;
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Landing.css";
+import { Link } from 'react-router-dom';
 const context = require.context('../images', false, /\.(png|jpg|jpeg)$/);
 const images = context.keys().map(context);
 
@@ -46,7 +47,7 @@ function Landing() {
         <br />
         <br />
         <br />
-        <button className="button">SIGN ME UP!</button>
+        <button className="button" ><Link to="/Signup" className="link">SIGN ME UP!</Link></button>
       </div>
     </>
   );

@@ -5,9 +5,11 @@ import Signup from "./Pages/Signup/Signup.jsx";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ToggleBtn from "./ToggleBtn.jsx";
+import Landing from "./Pages/Landing/Landing.jsx";
 
 function App() {
   const [user, setUser] = useState({});
+  const[token,setToken] = useState({});
   const storedTheme = localStorage.getItem("theme");
   const [thememode, setThememode] = useState(storedTheme || "light");
   const toggle = () => {
@@ -43,7 +45,7 @@ function App() {
           <Route
             path="/"
             element={
-              <Login
+              <Landing
                 user={user}
                 setUser={setUser}
                 thememode={thememode}
