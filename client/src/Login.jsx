@@ -77,7 +77,7 @@ function Login(){
                  onClick={submitFunction}
                 >Login</button>
                 <div>Don't have an account?'</div>
-                {/* <div ><Link to="/Signup"> SignUp</Link></div> */}
+                <div ><Link to="/Signup"> SignUp</Link></div>
              
              </div>
             </div>
