@@ -80,7 +80,7 @@ function Login({user,setUser,token,setToken}){
                 <button
                  className='button'
                  onClick={submitFunction}
-                >Login</button>
+                ><Link to = "/dashboard">Login</Link> </button>
                 <div>Don't have an account?'</div>
                 <div ><Link to="/Signup"> SignUp</Link></div>
              

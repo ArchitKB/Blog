@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import Header from './DashboardEle/Header';
-import Body from './DashboardEle/Body'
+import Header from './Header';
+import Body from './Body'
 
 function Dashboard(){
     return(

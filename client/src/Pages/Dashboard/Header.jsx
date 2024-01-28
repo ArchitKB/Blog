@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import logo from '../../public/logo192.png';
+import logo from '../../Components/logo.png';
 import './Dashboard.css';
 
 function Header(){
@@ -14,7 +14,7 @@ function Header(){
 };
 
 function Icon () {
-    return( <img src={logo} />);
+    return( <img className="logo" src={logo} />);
 }
 
 function Notifications () {

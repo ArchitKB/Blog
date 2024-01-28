@@ -1,5 +1,5 @@
 import Dashboard from "./Pages/Dashboard/Dashboard.jsx";
-import Header from "./DashboardEle/Header.jsx";
+import Header from "./Pages/Dashboard/Header.jsx";
 import Login from "./Pages/Login/Login.jsx";
 import Signup from "./Pages/Signup/Signup.jsx";
 import React, { useState, useEffect } from "react";
@@ -9,7 +9,7 @@ import Landing from "./Pages/Landing/Landing.jsx";
 
 function App() {
   const [user, setUser] = useState({});
-  const[token,setToken] = useState("");
+  const [token, setToken] = useState("");
   const storedTheme = localStorage.getItem("theme");
   const [thememode, setThememode] = useState(storedTheme || "light");
   const toggle = () => {
@@ -68,6 +68,17 @@ function App() {
             path="/signup"
             element={
               <Signup
+                user={user}
+                setUser={setUser}
+                thememode={thememode}
+                toggle={toggle}
+              />
+            }
+          />
+          <Route
+            path="/dashboard"
+            element={
+              <Dashboard
                 user={user}
                 setUser={setUser}
                 thememode={thememode}
