@@ -9,42 +9,45 @@ function Profile(){
 }
 
 function Feed(){
-    const [posts, setPosts] = useState([]);
+    let [posts, setPosts] = useState([]);
 
     useEffect( () => {
         async function fetchPost(){
             try{
-                const posts = await axios.get('http://localhost:3001/posts');
+                let postsObj = await axios.get('http://localhost:3001/posts', {
+                    headers: {
+                        'Authorization': "Bearer " + localStorage.getItem('token').slice(1,-1),
+                    },
+                });
+
+                setPosts(postsObj.data);
             } catch(error){
                 console.log(error);
             }
 
-            console.log(posts);
-            // posts = posts.map((post) => (JSON.stringify(post)));
         }
 
         fetchPost();
     }, []);
 
-    try{
-        
-    } catch(error){
-        return<h1>OOPSie DASies</h1>
-    }
+    const postsArray = posts.map((post, index) => (<Post key = {index} userName = {post.firstName + ' ' + post.lastName}  description = {post.description}/>));
+
     return(
-        <h1>Try</h1>
+        <ul>
+            {postsArray}
+        </ul>
     )
 }
 
-// async function Post(props){
+function Post(props){
 
-//     const userName = props.userName;
-//     const description = props.description;
-//     return(<div>
-//         <h1>{userName}</h1>
-//         <p>{description}</p>
-//     </div>);
-// }
+    const userName = props.userName;
+    const description = props.description;
+    return(<li>
+        <h1>{userName}</h1>
+        <p>{description}</p>
+    </li>);
+}
 
 function Body(){
     return(
