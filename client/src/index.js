@@ -9,6 +9,6 @@ import Landing from './Pages/Landing/Landing';
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Landing/>
+    <App/>
   </React.StrictMode>
 );

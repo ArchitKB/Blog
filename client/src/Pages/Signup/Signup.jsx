@@ -172,7 +172,7 @@ function Signup(){
 
                 </div>
                 <button
-                 className='button'
+                 className='buttonm'
                  onClick={submitFunction}
                 >SignUp</button>
                 <div>
