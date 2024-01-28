@@ -178,9 +178,9 @@ function Signup(){
                 <div>
                     Already signed up? 
                 </div>
-                {/* <div>
+                <div>
                     <Link to = "/login">Login</Link>
-                </div> */}
+                </div>
             </div>
         </form>
     )
