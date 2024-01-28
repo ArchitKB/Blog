@@ -1,7 +1,7 @@
 import Dashboard from "./Dashboard.jsx";
 import Header from "./DashboardEle/Header.jsx";
-// import Login from "./Login.jsx";
-import Signup from "./Signup.jsx";
+import Login from "./Pages/Login/Login.jsx";
+import Signup from "./Pages/Signup/Signup.jsx";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ToggleBtn from "./ToggleBtn.jsx";
