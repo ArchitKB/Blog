@@ -2,6 +2,8 @@ import React , {useState} from 'react';
 import {useNavigate} from 'react-router-dom'
 import { Link } from 'react-router-dom';
 import axios from "axios";
+import "./Signup.css"
+import image from "./image.jpg";
 function Signup(){
     //const navigate = useNavigate();
 
@@ -92,81 +94,87 @@ function Signup(){
             }
         }
     }
-
-
-
-
-
-
+    const backgroundImageStyle = {
+        backgroundImage: `url(${image})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        width: "100vw",
+        height: "100vh",
+        margin:"0px",
+        padding:"0px" 
+       };
     return (
         <form action="" onSubmit={submitFunction}>
-            <div className="outerDiv">
-                <div>
-                    SignUp
-                </div>
-                <div className='firstName'>
-                    <label htmlFor='fname'>firstname</label>
+           <div className='outerBox' style={backgroundImageStyle}>
+            <div className="outerDiv" >
+               <div className='innerDiv'>
+                <div className='input-box'>
+               <h1>SignUp</h1>
+               <div className='name-container'>
+                <div className='box firstName name'>
+                    <label htmlFor='fname'></label>
                     <input 
                     className='input'
                     value = {firstName}
                     type = "text"
-                    placeholder = "Enter the firstName"
+                    placeholder = "firstname"
                     onChange = {handleFirstNameChange}
                     required/>
 
                 </div>
 
-                <div className='lastName'>
-                    <label htmlFor='lname'>lastname</label>
+                <div className='box lastname name' >
+                    <label htmlFor='lname'></label>
                     <input 
                     className='input'
                     value = {lastName}
                     type = "text"
-                    placeholder = "Enter the firstName"
+                    placeholder = "lastName"
                     onChange = {handleLastNameChange}
                     required/>
 
                 </div>
-                <div className='email'>
-                    <label htmlFor='email'>email</label>
+               </div>
+                <div className='box email long'>
+                    <label htmlFor='email'></label>
                     <input 
                     className='input'
                     value = {email}
                     type = "text"
-                    placeholder = "Enter the email"
+                    placeholder = "email"
                     onChange = {handleEmailChange}
                     required/>
 
                 </div>
-                <div className='password'>
-                    <label htmlFor='fname'>password</label>
+                <div className='box password long'>
+                    <label htmlFor='fname'></label>
                     <input 
                     className='input'
                     value = {password}
                     type = "text"
-                    placeholder = "Enter the Password"
+                    placeholder = "password"
                     onChange = {handlePasswordChange}
                     required/>
 
                 </div>
-                <div className='occupation'>
-                    <label htmlFor='occupation'>occupation</label>
+                <div className=' box occupation long'>
+                    <label htmlFor='occupation'></label>
                     <input 
                     className='input'
                     value = {occupation}
                     type = "text"
-                    placeholder = "Enter your occupation"
+                    placeholder = "occupation"
                     onChange = {handleOccupationChange}
                     required/>
 
                 </div>
-                <div className='location'>
-                    <label htmlFor='location'>location</label>
+                <div className='box location long'>
+                    <label htmlFor='location'></label>
                     <input 
                     className='input'
                     value = {location}
                     type = "text"
-                    placeholder = "Enter your location"
+                    placeholder = "location"
                     onChange = {handleLocationChange}
                     required/>
 
@@ -175,12 +183,11 @@ function Signup(){
                  className='buttonm'
                  onClick={submitFunction}
                 >SignUp</button>
-                <div>
-                    Already signed up? 
-                </div>
-                <div>
-                    <Link to = "/login">Login</Link>
-                </div>
+                <div>Already signed up? <Link to = "/login">Login</Link></div>                
+               </div>
+               <div className='text-on-right '>Blogopedia</div>
+              </div>
+            </div>
             </div>
         </form>
     )
