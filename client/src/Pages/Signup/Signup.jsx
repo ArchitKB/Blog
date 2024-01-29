@@ -13,6 +13,7 @@ function Signup(){
     const [password,setPassword] = useState("");
     const [location,setLocation] = useState("");
     const [occupation,setOccupation] = useState("");
+    const [picturePath,setPicturePath] =useState("");
     
 
     /*---------------function to handle password----------------*/
@@ -57,7 +58,6 @@ function Signup(){
     /*-----------function to handle Submit--------------*/
     const submitFunction = async (event) => {
         event.preventDefault();
-        const picturePath = "";
         const friends = [];
         try{
           const res = await axios.post("http://localhost:3001/auth/register",{
@@ -68,7 +68,7 @@ function Signup(){
             picturePath,
             friends,
             location,
-            occupation
+            occupation,
           });
 
           console.log(res.data);
@@ -157,6 +157,7 @@ function Signup(){
                     required/>
 
                 </div>
+                
                 <div className=' box occupation long'>
                     <label htmlFor='occupation'></label>
                     <input 

@@ -1,4 +1,9 @@
-const UserWidget = ({userId, picturePath, token}) => {
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+
+const UserWidget = ({userId, picturePath}) => {
     const [user,setUser] = useState(null);
     const navigate = useNavigate();
     const getUser = async () => {
@@ -21,16 +26,16 @@ const UserWidget = ({userId, picturePath, token}) => {
         location,
         occupation,
         viewedProfile,
-        imprssions,
+        impressions,
         friend,
     }= user;
     return (
         <div>
             <ul>
             <img
-        style={{ objectFit: "cover", borderRadius: "" }}
-        width={400}
-        height={600}
+        style={{ objectFit: "cover", borderRadius: "50%" }}
+        width={60}
+        height={60}
         alt="user"
         src={`http://localhost:3001/assets/${picturePath}`}
       />
@@ -44,3 +49,4 @@ const UserWidget = ({userId, picturePath, token}) => {
         </div>
     )
 }
+export default UserWidget;
