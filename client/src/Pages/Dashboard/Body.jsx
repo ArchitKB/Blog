@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from "react";
 import axios from 'axios';
 import './Dashboard.css';
+// import Userwidget from 
 
 function Profile(){
     return(
@@ -33,7 +34,7 @@ function Feed(){
     const userId = JSON.parse(localStorage.getItem('user'));
 
     
-    const postsArray = posts.map((post, index) => (<Post key = {index} userName = {post.firstName + ' ' + post.lastName}  description = {post.description} likes={Object.keys(post.likes).length} is_liked={post.likes.userId} />));
+    const postsArray = posts.map((post, index) => (<Post key = {index} userName = {post.firstName + ' ' + post.lastName}  description = {post.description} likes={Object.keys(post.likes).length} is_liked={post.likes.userId} image ={post.picturePath} />));
 
 
     return(
@@ -51,6 +52,14 @@ function Post(props){
         <h1>{userName}</h1>
         <p>{description}</p>
         <p>Likes: {props.likes}</p>
+
+        <img
+        style={{ objectFit: "cover", borderRadius: "" }}
+        width={400}
+        height={600}
+        alt="user"
+        src={`http://localhost:3001/assets/${props.image}`}
+      />
         <p>{props.is_liked === undefined? false:true}</p>
     </li>);
 }
