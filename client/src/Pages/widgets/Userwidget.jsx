@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-
 const UserWidget = ({userId, picturePath}) => {
     const [user,setUser] = useState(null);
     const navigate = useNavigate();
@@ -29,8 +28,15 @@ const UserWidget = ({userId, picturePath}) => {
         impressions,
         friend,
     }= user;
+    const Wrapper = ({children}) => {
+        return (
+           <div style = {{border:'1px solid #B6BBC4',borderRadius:'8px',padding:'10px', width:'40%'}}>
+             {children}
+           </div>
+        );
+     };
     return (
-        <div>
+        <Wrapper>
             <ul>
             <img
         style={{ objectFit: "cover", borderRadius: "50%" }}
@@ -46,7 +52,7 @@ const UserWidget = ({userId, picturePath}) => {
                 <li>impressions : {impressions}</li>
 
             </ul>
-        </div>
+        </Wrapper>
     )
 }
 export default UserWidget;
