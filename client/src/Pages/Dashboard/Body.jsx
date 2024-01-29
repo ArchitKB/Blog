@@ -5,7 +5,10 @@ import UserWidget from "../widgets/Userwidget";
 import LikedButton from '@mui/icons-material/Favorite';
 import LikeButton from '@mui/icons-material/FavoriteBorder'
 import CommentButton from '@mui/icons-material/Comment';
+
 import ReportIcon from '@mui/icons-material/Report';
+import CreatePost from "../CreatePost/CreatePost";
+
 // import Userwidget from 
 
 function Feed(){
@@ -168,6 +171,7 @@ function Body(){
         <div className="body">
             <UserWidget userId ={userId._id} picturePath={userId.picturePath} />
             <Feed />
+            <CreatePost/>
         </div>
     );
 }
