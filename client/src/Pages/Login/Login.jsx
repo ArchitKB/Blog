@@ -1,7 +1,8 @@
 import React , {useState} from 'react';
 import axios from "axios";
 import { Link } from 'react-router-dom';
-
+import "./Login.css"
+import image from "./image.jpg";
 
 function Login({user,setUser,token,setToken}){
     const [email,setEmail] = useState("");
@@ -45,45 +46,52 @@ function Login({user,setUser,token,setToken}){
         }
     }
     }
+    const backgroundImageStyle = {
+        backgroundImage: `url(${image})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        width: "100vw",
+        height: "100vh",
+        margin:"0px",
+        padding:"0px" 
+       };
     return (
         <>
         <form onSubmit={submitFunction}>
-            <div className='bigger container'>
-              <div className='login'> 
-                 Login
-              </div>
+            <div className='bigger container'style={backgroundImageStyle}>
+                <div className='input-box2 data'>
+              <h1>Login</h1>
               <div className='content'>
                 
-              <div className='email'>
-                    <label htmlFor='email'>email</label>
+              <div className='email box'>
+                    <label htmlFor='email'></label>
                     <input 
                     className='input'
                     value = {email}
                     type = "email"
-                    placeholder = "Enter the email"
+                    placeholder = "Enter your email"
                     onChange = {handleEmailChange}
                     required/>
 
                 </div>
-                <div className='password'>
-                    <label htmlFor='fname'>password</label>
+                <div className='password box'>
+                    <label htmlFor='fname'></label>
                     <input 
                     className='input'
                     value = {password}
                     type = "text"
-                    placeholder = "Enter the Password"
+                    placeholder = "Enter your password"
                     onChange = {handlePasswordChange}
                     required/>
 
                 </div>
 
                 <button
-                 className='button'
+                 className='buttonm'
                  onClick={submitFunction}
-                ><Link to = "/dashboard">Login</Link> </button>
-                <div>Don't have an account?'</div>
-                <div ><Link to="/Signup"> SignUp</Link></div>
-             
+                ><Link to = "/dashboard" className="login-link">Login</Link> </button>
+                <div>Don't have an account?<Link to="/Signup" className='signup-link'> SignUp</Link></div>
+              </div>
              </div>
             </div>
         </form>
