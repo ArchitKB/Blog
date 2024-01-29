@@ -13,7 +13,6 @@ function Signup(){
     const [password,setPassword] = useState("");
     const [location,setLocation] = useState("");
     const [occupation,setOccupation] = useState("");
-    const [picturePath,setPicturePath] =useState("");
     
 
     /*---------------function to handle password----------------*/
@@ -55,23 +54,39 @@ function Signup(){
         setOccupation(newOccupation);
     }
 
+    /*--------------function to handle filechange------------------*/
+    const [currentFile, setCurrentFile] = useState(null);
+    const handleFileChange = (event) => {
+        setCurrentFile(event.target.files[0]);
+    }
+
     /*-----------function to handle Submit--------------*/
     const submitFunction = async (event) => {
+        
+        
         event.preventDefault();
         const friends = [];
+        const formData = new FormData();
+        formData.append('picture',currentFile);
+        formData.append('firstName',firstName);
+        formData.append('lastName',lastName);
+        formData.append('password',password);
+        formData.append('email',email);
+        formData.append('friends',friends);
+        formData.append('location',location);
+        formData.append('occupation',occupation);
+        formData.append('picturePath',currentFile.name);
+        
         try{
-          const res = await axios.post("http://localhost:3001/auth/register",{
-            firstName,
-            lastName,
-            email,
-            password,
-            picturePath,
-            friends,
-            location,
-            occupation,
+          const response = await axios.post("http://localhost:3001/auth/register",formData,{
+            headers : {
+                'Content-Type': 'multi/form-data',
+            },
           });
 
-          console.log(res.data);
+        //   console.log(response);
+
+        //   console.log(res);
           alert("Signed Up successfully");
           //navigate('/login');
 
@@ -157,7 +172,6 @@ function Signup(){
                     required/>
 
                 </div>
-                
                 <div className=' box occupation long'>
                     <label htmlFor='occupation'></label>
                     <input 
@@ -180,6 +194,11 @@ function Signup(){
                     required/>
 
                 </div>
+
+                <div className='box location long'>
+                    <input type="file" onChange={handleFileChange} />
+                </div>
+
                 <button
                  className='buttonm'
                  onClick={submitFunction}

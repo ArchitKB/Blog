@@ -5,13 +5,7 @@ import UserWidget from "../widgets/Userwidget";
 import LikedButton from '@mui/icons-material/Favorite';
 import LikeButton from '@mui/icons-material/FavoriteBorder'
 import CommentButton from '@mui/icons-material/Comment';
-// import Userwidget from
-
-function Profile(){
-    return(
-        <h1>Profile placeholder</h1>
-    );
-}
+// import Userwidget from 
 
 function Feed(){
     let [posts, setPosts] = useState([]);
@@ -95,7 +89,7 @@ function Post(props){
     }
 
     async function handleComment(){
-
+        //comments here
     }
 
     return(<li>
