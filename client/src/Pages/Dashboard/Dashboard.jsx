@@ -3,11 +3,11 @@ import axios from 'axios';
 import Header from './Header';
 import Body from './Body'
 
-function Dashboard(){
+function Dashboard({user ,setUser}){
     return(
         <>
         <Header />
-        <Body />
+        <Body user ={user} setUser ={setUser}/>
         </>
     );
 };

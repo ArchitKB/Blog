@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from "react";
 import axios from 'axios';
 import './Dashboard.css';
-// import Userwidget from 
+import UserWidget from "../widgets/Userwidget";
 
 function Profile(){
     return(
@@ -65,9 +65,10 @@ function Post(props){
 }
 
 function Body(){
+    const userId = JSON.parse(localStorage.getItem('user'));
     return(
         <div className="body">
-            <Profile />
+            <UserWidget userId ={userId._id} picturePath={userId.picturePath} />
             <Feed />
         </div>
     );
