@@ -7,8 +7,8 @@ body{
     position: absolute;
     color: #fff;
     margin-left: 5vw;
-    margin-top: 2vw;
-    padding: 2vw 2vw 2vw 2vw;
+    margin-top: 0.5vw;
+    padding: 0vw 2vw ;
     height: max-content;
     background: rgba(0, 0, 0, 0.4);
     border-radius: 15px;
@@ -39,7 +39,7 @@ body{
   }
 input{
     width: 77%;
-    height: 4.5vw;
+    height: 3.5vw;
     border-radius: 5px;
     background: rgba(0, 0, 0, 0.4);
     color: #fff;

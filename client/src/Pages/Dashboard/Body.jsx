@@ -5,7 +5,10 @@ import UserWidget from "../widgets/Userwidget";
 import LikedButton from '@mui/icons-material/Favorite';
 import LikeButton from '@mui/icons-material/FavoriteBorder'
 import CommentButton from '@mui/icons-material/Comment';
+
+import ReportIcon from '@mui/icons-material/Report';
 import CreatePost from "../CreatePost/CreatePost";
+
 // import Userwidget from 
 
 function Feed(){
@@ -92,22 +95,74 @@ function Post(props){
     async function handleComment(){
         //comments here
     }
+    async function handleContent(){
 
-    return(<li>
-        <h2>{userName}</h2>
-        <p>{description}</p>
-        <p>Likes: {likes}</p>
-        <p>{isLiked? "true" : "false"}</p>
-        <img
-        style={{ objectFit: "cover", borderRadius: "" }}
-        width={400}
-        height={600}
-        alt="user"
-        src={`http://localhost:3001/assets/${props.image}`}
-      />
-        <p>{isLiked === true? <LikedButton onClick={handleLike} sx={{color:'red'}}/>:<LikeButton onClick={handleLike} sx={{color:'red'}}/>}</p>
-        <p><CommentButton sx={{color:'greenyellow'}} onClick={handleComment}/></p>
-    </li>);
+    }
+    const Wrapper = ({children}) => {
+       return (
+          <div style = {{border:'1px solid #B6BBC4',borderRadius:'8px',padding:'10px', width:'40%'}}>
+            {children}
+          </div>
+       );
+    };
+    const LikeDiv = ({isLiked}) => {
+      return(
+        <div>
+          {isLiked ? (
+            <div>
+                <LikedButton onClick={handleLike} sx={{ color: "red" }} />
+            </div>
+          ): (
+            <div>
+                <LikeButton onClick={handleLike} sx={{ color: "red" }} />
+            </div>
+          )}
+        </div>
+      );
+    };
+    const CommentDiv = ({}) => {
+        return (
+            <CommentButton sx={{
+                color: "grey",
+                '&:hover': {
+                  cursor: "pointer",
+                },
+              }} onClick={handleComment} />
+        );
+    };
+    const Report = ({}) => {
+       return (
+        <ReportIcon sx={{
+            color: "black",
+            '&:hover': {
+              cursor: "pointer",
+            },
+          }} onClick={handleContent}/>
+       )
+    };
+    const parentContainerStyle = {
+        display: 'flex',
+        alignItems: 'left',
+        gap:'2vw'
+      };
+    return (
+        <Wrapper>
+          <h5>{userName}</h5>
+          <p>{description}</p>
+          <img
+            style={{ objectFit: "cover", borderRadius: "", width: "100%", height: "20vw" }}
+            alt="user"
+            src={`http://localhost:3001/assets/${props.image}`}
+          />
+          <div style={parentContainerStyle}>
+         <LikeDiv isLiked = {isLiked} />
+         <CommentDiv/>
+         <Report/>
+         </div>
+        </Wrapper>
+      );
+      
+      
 }
 
 function Body(){
