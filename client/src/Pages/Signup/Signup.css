@@ -42,6 +42,7 @@ input{
     height: 4.5vw;
     border-radius: 5px;
     background: rgba(0, 0, 0, 0.4);
+    color: #fff;
 }
 .box{
     width: 40vw;
@@ -68,4 +69,11 @@ input{
         cursor: pointer;
   }
 
+  ::placeholder {
+    color: rgb(255, 255, 255);
+    opacity: 1; /* Firefox */
+  }
   
+  ::-ms-input-placeholder { /* Edge */
+    color: rgb(255, 255, 255);
+  }
