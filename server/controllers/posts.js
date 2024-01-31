@@ -79,6 +79,18 @@ export const getUserPosts = async (req, res) => {
     });
   }
 };
+export const getPost = async (req, res) => {
+  try {
+    const { postId } = req.params;
+    const curPost = await Post.findById(postId);
+
+    res.statuc(200).json(curPost);
+  } catch (error) {
+    res.status(404).json({
+      message: error.message,
+    });
+  }
+};
 
 //UPDATE
 export const likePost = async (req, res) => {
