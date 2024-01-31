@@ -1,5 +1,6 @@
 import Post from "../models/Post.js";
 import User from "../models/user.js";
+import Comment from "../models/Comment.js";
 // CREATE
 export const createPost = async (req, res) => {
   try {
@@ -25,6 +26,37 @@ export const createPost = async (req, res) => {
     });
   }
 };
+
+export const createComment = async (req, res) => {
+  try {
+    const { userId, description } = req.body;
+    const { postId } = req.params;
+
+    const curPost = await Post.findById(postId);
+    const curUser = await User.findById(userId);
+
+    const newComment = new Comment({
+      userId,
+      firstName: curUser.firstName,
+      lastName: curUser.lastName,
+      description,
+      picturePath: curUser.picturePath,
+    });
+
+    const comments = curPost.comment;
+    comments.push(newComment);
+
+    await Post.findByIdAndUpdate(postId, { comment: comments });
+    await newComment.save();
+
+    res.status(201).json(newComment);
+  } catch (error) {
+    res.status(409).json({
+      message: error.message,
+    });
+  }
+};
+
 //READ
 export const getFeedPosts = async (req, res) => {
   try {
