@@ -2,6 +2,7 @@ import Dashboard from "./Pages/Dashboard/Dashboard.jsx";
 import Header from "./Pages/Dashboard/Header.jsx";
 import Login from "./Pages/Login/Login.jsx";
 import Signup from "./Pages/Signup/Signup.jsx";
+import ViewPost from "./Pages/Post/ViewPost.jsx";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ToggleBtn from "./ToggleBtn.jsx";
@@ -90,6 +91,7 @@ function App() {
             path="/btn"
             element={<ToggleBtn thememode={thememode} toggle={toggle} />}
           />
+          <Route path="/viewpost/:postId" element={<ViewPost />} />
         </Routes>
       </BrowserRouter>
     </>
