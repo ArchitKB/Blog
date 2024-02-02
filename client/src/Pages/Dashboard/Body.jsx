@@ -5,15 +5,16 @@ import UserWidget from "../widgets/Userwidget";
 import LikedButton from '@mui/icons-material/Favorite';
 import LikeButton from '@mui/icons-material/FavoriteBorder'
 import CommentButton from '@mui/icons-material/Comment';
-
+import AddButton from '@mui/icons-material/Add';
 import ReportIcon from '@mui/icons-material/Report';
 import CreatePost from "../CreatePost/CreatePost";
+import Popup from "./Popup";
 
 // import Userwidget from 
 
 function Feed(){
     let [posts, setPosts] = useState([]);
-
+    const [showPopup, setShowPopup] = useState(false);
     useEffect( () => {
         async function fetchPost(){
             try{
@@ -54,8 +55,15 @@ function Feed(){
     });
 
 
+    function togglePopup(){
+        setShowPopup(!showPopup);
+    }
     return(
         <div style={{margin:'0',padding:'0'}}>
+            <div onClick={togglePopup}>
+            <AddButton color="primary" />
+            </div>
+            {showPopup ?<Popup className ="popup" show={showPopup} setShow={setShowPopup}/> : null}
             {postsArray}
         </div>
     )

@@ -5,13 +5,18 @@ import FriendList from "../../Components/FriendList";
 function ProfilePage(){
     const userId = JSON.parse(localStorage.getItem('user'));
 return (
-    
-<div>
-    <Header></Header>
-    <UserWidget userId={userId._id} picturePath={userId.picturePath}/>
-    <UserPosts />
-    <FriendList/>
-</div>
+    <div className="body" >
+   <div>
+       <Header></Header>
+   </div>
+   <div className="widget" style={{marginTop:'60px'}}>
+       <UserWidget userId={userId._id} picturePath={userId.picturePath}/>
+   </div>
+   <div className="posts" style={{marginTop:'45px'}}>
+       <UserPosts />
+   </div>
+        <FriendList/>
+   </div>
 )
 }
 export default ProfilePage;

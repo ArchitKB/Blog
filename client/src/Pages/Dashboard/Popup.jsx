@@ -1,6 +1,13 @@
-import React , {useState} from 'react';
-import axios from "axios";
-function CreatePost(){
+import React,{useState} from 'react';
+import axios from 'axios';
+import './Dashboard.css';
+import "bootstrap";
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+function Popup(props){
+
     const [description,setDescription] = useState("");
     const [currentFile, setCurrentFile] = useState(null);
     const user = JSON.parse(localStorage.getItem('user'));
@@ -13,8 +20,12 @@ function CreatePost(){
     const handleFileChange = (event) => {
         setCurrentFile(event.target.files[0]);
     }
+    const handleClose = () => {
+        props.setShow(false);
+    }
     const submitFunction = async (event) => {
         event.preventDefault();
+        props.setShow(false);
         const formData = new FormData();
         formData.append('picture',currentFile);
         formData.append('description',description);
@@ -33,47 +44,41 @@ function CreatePost(){
             console.log(error);
         }
 
-
-    }
-    const Wrapper = ({children}) => {
-        return (
-           <div style = {{border:'1px solid #B6BBC4',borderRadius:'8px',width:'18vw',padding:'1vw',marginLeft:'1vw'}}>
-             {children}
-           </div>
-        );
-     };
-    return (
-        <form action="" onSubmit={submitFunction}>
-            <Wrapper>
-                <div>
-              <h1>Create Post</h1>
-               </div>
+    };
+    return(
+        <Modal show={props.show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Create Post</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
             <div >
-                    <label htmlFor='fname'></label>
-                    <input 
+                <label htmlFor='fname'></label>
+                <input 
                     className='input'
                     value = {description}
                     type = "text"
                     placeholder = "write the description"
                     onChange = {handleDescriptionChange}
-                    required/>
+                    required
+                />
 
-                </div>
+            </div>
                 <div>
                     <input 
                     type="file" 
                     onChange={handleFileChange}
                     required />
                 </div>
-                <div>
-                <button
-                 className='button2'
-                 onClick={submitFunction}>post</button>
-                 </div>
-
-           </Wrapper>
-        </form>
-    )
-
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={submitFunction}>
+            Submit Post
+          </Button>
+        </Modal.Footer>
+      </Modal>);
 }
-export default CreatePost;
+
+export default Popup;
