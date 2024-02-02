@@ -3,8 +3,10 @@ import axios from "axios";
 import { Link } from 'react-router-dom';
 import "./Login.css"
 import image from "./image.jpg";
+import {useNavigate} from 'react-router-dom'
 
 function Login({user,setUser,token,setToken}){
+    const navigate = useNavigate();
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
 
@@ -36,6 +38,7 @@ function Login({user,setUser,token,setToken}){
         localStorage.setItem('user',JSON.stringify(res.data.requiredUser));
         localStorage.setItem('token',JSON.stringify(res.data.sessionToken));
         alert("Logged in successfully");
+        navigate('/dashboard');
        }
        catch(err){
         if(err.response && err.response.status === 400 ){

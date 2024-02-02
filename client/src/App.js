@@ -7,6 +7,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ToggleBtn from "./ToggleBtn.jsx";
 import Landing from "./Pages/Landing/Landing.jsx";
+import UserPosts from "./Components/UserPosts.jsx";
 
 function App() {
   const [user, setUser] = useState({});
@@ -80,6 +81,17 @@ function App() {
             path="/dashboard"
             element={
               <Dashboard
+                user={user}
+                setUser={setUser}
+                thememode={thememode}
+                toggle={toggle}
+              />
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <UserPosts
                 user={user}
                 setUser={setUser}
                 thememode={thememode}
