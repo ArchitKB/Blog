@@ -85,12 +85,12 @@ function Post(props){
 
     }
     const Wrapper = ({children}) => {
-       return (
-          <div style = {{border:'1px solid #B6BBC4',borderRadius:'8px',padding:'10px', width:'40%'}}>
-            {children}
-          </div>
-       );
-    };
+        return (
+           <div style = {{border:'1px solid #B6BBC4',borderRadius:'8px', padding:'3vw'}}>
+             {children}
+           </div>
+        );
+     };
     const LikeDiv = ({isLiked}) => {
       return(
         <div>
@@ -136,7 +136,7 @@ function Post(props){
           <h5>{userName}</h5>
           <p>{description}</p>
           <img
-            style={{ objectFit: "cover", borderRadius: "", width: "100%", height: "20vw" }}
+            style={{ objectFit: "contain", borderRadius: "0.5vw", height: "80%" }}
             alt="user"
             src={`http://localhost:3001/assets/${props.image}`}
           />
@@ -154,7 +154,7 @@ function Post(props){
 function UserPosts(){
     const userId = JSON.parse(localStorage.getItem('user'))._id;
     return(
-        <div className="body">
+        <div className="feed">
             <Feed userId ={userId}/>
         </div>
     );
