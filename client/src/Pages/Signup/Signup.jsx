@@ -5,7 +5,7 @@ import axios from "axios";
 import "./Signup.css"
 import image from "./image.jpg";
 function Signup(){
-    //const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const [firstName,setFirstName] = useState("");
     const [email,setEmail] = useState("");
@@ -88,7 +88,7 @@ function Signup(){
 
         //   console.log(res);
           alert("Signed Up successfully");
-          //navigate('/login');
+          navigate('/login');
 
 
           // Making things empty
