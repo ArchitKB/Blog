@@ -35,10 +35,19 @@ function CreatePost(){
 
 
     }
-
+    const Wrapper = ({children}) => {
+        return (
+           <div style = {{border:'1px solid #B6BBC4',borderRadius:'8px',width:'18vw',padding:'1vw',marginLeft:'1vw'}}>
+             {children}
+           </div>
+        );
+     };
     return (
         <form action="" onSubmit={submitFunction}>
-            <h1>Create Post</h1>
+            <Wrapper>
+                <div>
+              <h1>Create Post</h1>
+               </div>
             <div >
                     <label htmlFor='fname'></label>
                     <input 
@@ -57,10 +66,10 @@ function CreatePost(){
                     required />
                 </div>
                 <button
-                 className='buttonm'
+                 className='button2'
                  onClick={submitFunction}>post</button>
 
-            
+           </Wrapper>
         </form>
     )
 

@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Margin } from "@mui/icons-material";
 
 const UserWidget = ({userId, picturePath}) => {
     const [user,setUser] = useState(null);
@@ -30,16 +31,16 @@ const UserWidget = ({userId, picturePath}) => {
     }= user;
     const Wrapper = ({children}) => {
         return (
-           <div style = {{border:'1px solid #B6BBC4',borderRadius:'8px',padding:'10px', width:'40%'}}>
+           <div style = {{border:'1px solid #B6BBC4',borderRadius:'8px',width:'18vw',padding:'1vw',marginLeft:'1vw'}}>
              {children}
            </div>
         );
      };
     return (
-        <Wrapper>
-            <ul>
+        <Wrapper >
+            <div >
             <img
-        style={{ objectFit: "cover", borderRadius: "50%" }}
+        style={{ borderRadius: "50%",display:'inline-flex'}}
         width={60}
         height={60}
         alt="user"
@@ -51,7 +52,7 @@ const UserWidget = ({userId, picturePath}) => {
                 <li>viewedProfile : {viewedProfile}</li>
                 <li>impressions : {impressions}</li>
 
-            </ul>
+            </div>
         </Wrapper>
     )
 }

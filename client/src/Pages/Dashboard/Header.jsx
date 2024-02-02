@@ -27,7 +27,7 @@ import {
 function Header({user,setUser}){
     const navigate = useNavigate();
     return (
-        <div className='header'>
+        <div className='header' style={{backgroundColor:'#00ADB5',position:'fixed',width:'100%'}}>
         <Icon />
         <div>blogopedia</div>
         <div>

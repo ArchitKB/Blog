@@ -55,9 +55,9 @@ function Feed(){
 
 
     return(
-        <ul>
+        <div style={{margin:'0',padding:'0'}}>
             {postsArray}
-        </ul>
+        </div>
     )
 }
 
@@ -100,7 +100,7 @@ function Post(props){
     }
     const Wrapper = ({children}) => {
        return (
-          <div style = {{border:'1px solid #B6BBC4',borderRadius:'8px',padding:'10px', width:'40%'}}>
+          <div style = {{border:'1px solid #B6BBC4',borderRadius:'8px', width:'83%',padding:'5vw'}}>
             {children}
           </div>
        );
@@ -148,9 +148,9 @@ function Post(props){
     return (
         <Wrapper>
           <h5>{userName}</h5>
-          <p>{description}</p>
+          <div>{description}</div>
           <img
-            style={{ objectFit: "cover", borderRadius: "", width: "100%", height: "20vw" }}
+            style={{ objectFit: "cover", borderRadius: "2px", width: "100%", height: "20vw" }}
             alt="user"
             src={`http://localhost:3001/assets/${props.image}`}
           />
@@ -165,15 +165,19 @@ function Post(props){
       
 }
 
-function Body(){
+function Body() {
     const userId = JSON.parse(localStorage.getItem('user'));
-    return(
-        <div className="body">
-            <UserWidget userId ={userId._id} picturePath={userId.picturePath} />
-            <Feed />
-            <CreatePost/>
+    return (
+        <div className="body" style={{ display: 'flex', margin: '0', gap: '1px',paddingTop:'60px' }}>
+        <div className="widget">
+            <UserWidget userId={userId._id} picturePath={userId.picturePath} />
         </div>
+        <Feed />
+        <div className="createPost">
+            <CreatePost />
+        </div>
+    </div>
+    
     );
-}
-
+  }
 export default Body;
