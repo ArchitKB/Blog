@@ -6,8 +6,8 @@ import Body from './Body'
 function Dashboard({user ,setUser}){
     return(
         <>
-        <Header />
-        <Body user ={user} setUser ={setUser}/>
+        <Header></Header>
+        <Body user ={user} setUser ={setUser} />
         </>
     );
 };
