@@ -1,6 +1,7 @@
 import UserWidget from "../widgets/Userwidget";
 import UserPosts from "../../Components/UserPosts";
 import Header from "../Dashboard/Header";
+import FriendList from "../../Components/FriendList";
 function ProfilePage(){
     const userId = JSON.parse(localStorage.getItem('user'));
 return (
@@ -14,6 +15,7 @@ return (
    <div className="posts" style={{marginTop:'45px'}}>
        <UserPosts />
    </div>
+        <FriendList/>
    </div>
 )
 }
