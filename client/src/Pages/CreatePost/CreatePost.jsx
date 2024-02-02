@@ -65,9 +65,11 @@ function CreatePost(){
                     onChange={handleFileChange}
                     required />
                 </div>
+                <div>
                 <button
                  className='button2'
                  onClick={submitFunction}>post</button>
+                 </div>
 
            </Wrapper>
         </form>
