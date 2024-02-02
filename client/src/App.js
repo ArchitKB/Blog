@@ -8,6 +8,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ToggleBtn from "./ToggleBtn.jsx";
 import Landing from "./Pages/Landing/Landing.jsx";
 import UserPosts from "./Components/UserPosts.jsx";
+import ProfilePage from "./Pages/profilePage/ProfilePage.jsx";
 
 function App() {
   const [user, setUser] = useState({});
@@ -91,11 +92,16 @@ function App() {
           <Route
             path="/profile"
             element={
-              <UserPosts
-                user={user}
-                setUser={setUser}
-                thememode={thememode}
-                toggle={toggle}
+              // <UserPosts
+              //   user={user}
+              //   setUser={setUser}
+              //   thememode={thememode}
+              //   toggle={toggle}
+              // />
+              <ProfilePage user={user}
+                 setUser={setUser}
+                 thememode={thememode}
+                 toggle={toggle} 
               />
             }
           />
