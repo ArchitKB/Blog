@@ -2,6 +2,7 @@ import React,{useState, useEffect} from "react";
 import axios from 'axios';
 import './Dashboard.css';
 import UserWidget from "../widgets/Userwidget";
+import Header from "./Header";
 import LikedButton from '@mui/icons-material/Favorite';
 import LikeButton from '@mui/icons-material/FavoriteBorder'
 import CommentButton from '@mui/icons-material/Comment';
@@ -176,13 +177,17 @@ function Post(props){
 function Body() {
     const userId = JSON.parse(localStorage.getItem('user'));
     return (
-        <div className="body" style={{ display: 'flex', margin: '0', gap: '1px',paddingTop:'60px' }}>
+        
+        <div className="body">
+        <Header userId={userId._id} picturePath={userId.picturePath}/>
+        <div className="top" style = {{display: 'flex', margin: '0', gap: '1px',paddingTop:'60px'}}>
         <div className="widget">
             <UserWidget userId={userId._id} picturePath={userId.picturePath} />
         </div>
         <Feed />
         <div className="createPost">
             <CreatePost />
+        </div>
         </div>
     </div>
     
