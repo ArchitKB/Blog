@@ -7,7 +7,7 @@ function ProfilePage(){
 return (
     <div className="body" >
    <div>
-       <Header></Header>
+       <Header userId={userId._id} picturePath={userId.picturePath}></Header>
    </div>
    <div className="widget" style={{marginTop:'60px'}}>
        <UserWidget userId={userId._id} picturePath={userId.picturePath}/>

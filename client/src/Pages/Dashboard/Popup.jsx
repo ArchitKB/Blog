@@ -2,8 +2,7 @@ import React,{useState} from 'react';
 import axios from 'axios';
 import './Dashboard.css';
 import "bootstrap";
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
+import { Modal, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Popup(props){
