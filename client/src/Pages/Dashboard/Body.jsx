@@ -11,6 +11,7 @@ import ReportIcon from '@mui/icons-material/Report';
 import CreatePost from "../CreatePost/CreatePost";
 import FriendList from "../../Components/FriendList";
 import Popup from "./Popup";
+import { Link } from "react-router-dom";
 
 // import Userwidget from 
 
@@ -53,7 +54,7 @@ function Feed(){
         });
 
 
-        return <Post key = {post._id} id = {post._id} userName = {post.firstName + ' ' + post.lastName}  description = {post.description} likes={likes} is_liked={is_liked} image ={post.picturePath} />
+        return <Post key = {post._id} id = {post._id} userName = {post.firstName + ' ' + post.lastName}  description = {post.description} likes={likes} is_liked={is_liked} image ={post.picturePath} profile = {post.userId.profile} />
     });
 
 
@@ -155,9 +156,12 @@ function Post(props){
         alignItems: 'left',
         gap:'2vw'
       };
+    const Profile = {
+      
+    }
     return (
         <Wrapper>
-          <h5>{userName}</h5>
+          <h5><Link onClick={Profile}>{userName}</Link></h5>
           <div>{description}</div>
           <img
             style={{ objectFit: "cover", borderRadius: "2px", width: "100%", height: "20vw" }}
