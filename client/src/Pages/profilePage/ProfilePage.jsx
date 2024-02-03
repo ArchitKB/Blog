@@ -2,8 +2,8 @@ import UserWidget from "../widgets/Userwidget";
 import UserPosts from "../../Components/UserPosts";
 import Header from "../Dashboard/Header";
 import FriendList from "../../Components/FriendList";
-function ProfilePage(){
-    const userId = JSON.parse(localStorage.getItem('user'));
+function ProfilePage({userId}){
+    // const userId = JSON.parse(localStorage.getItem('user'));
 return (
     <div className="body" >
    <div>
