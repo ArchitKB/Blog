@@ -9,6 +9,7 @@ import CommentButton from '@mui/icons-material/Comment';
 import AddButton from '@mui/icons-material/Add';
 import ReportIcon from '@mui/icons-material/Report';
 import CreatePost from "../CreatePost/CreatePost";
+import FriendList from "../../Components/FriendList";
 import Popup from "./Popup";
 
 // import Userwidget from 
@@ -186,7 +187,7 @@ function Body() {
         </div>
         <Feed />
         <div className="createPost">
-            <CreatePost />
+            <FriendList/>
         </div>
         </div>
     </div>

@@ -38,7 +38,7 @@ function Friends({userId}){
                 <li>{props.userName}</li>
                 <li>{props.location}</li>
                 <img
-            style={{ objectFit: "cover", borderRadius: "", width: "100%", height: "20vw" }}
+            style={{ objectFit: "cover", borderRadius: "50%", width: "100%", height: "20vw" }}
             alt="user"
             src={`http://localhost:3001/assets/${props.picturePath}`}
           />
