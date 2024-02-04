@@ -6,9 +6,12 @@ function ViewPost(){
     const {postId} = useParams();
     const [curPost, setCurPost] = useState(null);
     const [user, setUser] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    let username;
     useEffect( () =>{
 
         async function getUser(){
+
             let post;
             let user;
             try{
@@ -17,14 +20,18 @@ function ViewPost(){
                         'Authorization': "Bearer " + localStorage.getItem('token').slice(1,-1),
                     },
                 });
-                user = await axios.get(`http://localhost:3001/posts/${post.userId}` , {
+                post = post.data;
+                user = await axios.get(`http://localhost:3001/users/${post.userId}` , {
                     headers : {
                         'Authorization' : 'Bearer ' + localStorage.getItem('token').slice(1,-1),
                     },
                 })
 
+                user = user.data;
             }catch(error){
                 console.log(error);
+            }finally{
+                setIsLoaded(true);
             }
 
             setCurPost(post);
@@ -33,26 +40,34 @@ function ViewPost(){
 
         getUser();
     },[]);
-
-    // const username = user.firstName + ' ' + user.lastName;    
     
-    console.log(user)
-    console.log(curPost);
+
+    if(!isLoaded){
+        return(<h1> Loading ... </h1>);
+    }
+
+    console.log(isLoaded);
     return(
-    <div>
-        {/* <img
-                style={{ objectFit: "cover", borderRadius: "50%" }}
-                width={60}
-                height={60}
-                alt="user"
-                src={`http://localhost:3001/assets/${user.picturePath}`}
-            />
+        <div>
+            <div>
+                <img
+                        style={{ objectFit: "cover", borderRadius: "50%" }}
+                        width={60}
+                        height={60}
+                        alt="user"
+                        src={`http://localhost:3001/assets/${user.picturePath}`}
+                />
 
-            <h1>{username}</h1> */}
+                <h1>{user.firstName + ' ' + user.lastName}</h1> 
+                <h2>{user.occupation}</h2>
+            </div>
 
-            {/* <p>{user.description}</p> */}
-        </div>
-      );
+            <div>
+                <h3>{curPost.description}</h3>
+                <p>{curPost.about}</p>
+            </div>
+            </div>
+        );
 
 }
 
