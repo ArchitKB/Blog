@@ -4,7 +4,7 @@ import Comment from "../models/Comment.js";
 // CREATE
 export const createPost = async (req, res) => {
   try {
-    const { userId, description, picturePath } = req.body;
+    const { userId, description, picturePath, contents, sources } = req.body;
     const user = await User.findById(userId);
     const newPost = new Post({
       userId,
@@ -12,10 +12,12 @@ export const createPost = async (req, res) => {
       lastName: user.lastName,
       location: user.location,
       description,
+      contents,
       userPicturePath: user.picturePath,
       picturePath,
       likes: {},
       comments: [],
+      sources: sources,
     });
     await newPost.save();
     const post = await Post.find();

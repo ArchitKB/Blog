@@ -37,7 +37,18 @@ function ClearLocal() {
     </MenuItem>
   );
 }
+function Profile() {
+  const navigate = useNavigate();
 
+  const handleProfile = () => {
+    navigate('/profile');
+  };
+
+  return (
+    <MenuItem>
+    <button onClick={handleProfile}>Profile</button></MenuItem>
+  )
+}
 function Header({ userId, picturePath }) {
   const [user,setUser] = useState(null);
   const navigate = useNavigate();
@@ -106,9 +117,7 @@ function Header({ userId, picturePath }) {
           input={<InputBase />}
         >
           
-          <MenuItem value="aayush">
-            <Typography>Profile</Typography>
-          </MenuItem>
+          <Profile/>
           <ClearLocal />
         </Select>
       </FormControl>
