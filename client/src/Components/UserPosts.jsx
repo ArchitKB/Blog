@@ -151,8 +151,9 @@ function Post(props){
       
 }
 
-function UserPosts(){
-    const userId = JSON.parse(localStorage.getItem('user'))._id;
+function UserPosts({userId}){
+    // const userId = JSON.parse(localStorage.getItem('user'))._id;
+    
     return(
         <div className="feed">
             <Feed userId ={userId}/>

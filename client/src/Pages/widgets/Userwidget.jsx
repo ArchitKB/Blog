@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Margin } from "@mui/icons-material";
 
-const UserWidget = ({userId, picturePath}) => {
+const UserWidget = ({userId}) => {
     const [user,setUser] = useState(null);
     const navigate = useNavigate();
     const getUser = async () => {
@@ -27,6 +27,7 @@ const UserWidget = ({userId, picturePath}) => {
         occupation,
         viewedProfile,
         impressions,
+        picturePath,
         friend,
     }= user;
     const Wrapper = ({children}) => {

@@ -1,6 +1,8 @@
 import { useState,useEffect } from "react";
 import axios from "axios";
+import {useNavigate} from 'react-router-dom'
 function Friends({userId}){
+    
     const [friends, setFriends] = useState([]);
     useEffect( () => {
         async function fetchFriends(){
@@ -32,10 +34,14 @@ function Friends({userId}){
         </ul>
     )
     function Friend(props){
+        const navigate = useNavigate();
+        function handleprofile(){
+            navigate(`/profile/${props.id}`);
+        }
     return (
         <div>
             <ul>
-                <li>{props.userName}</li>
+                <button onClick ={handleprofile}>{props.userName}</button>
                 <li>{props.location}</li>
                 <img
             style={{ objectFit: "cover", borderRadius: "50%", width: "100%", height: "20vw" }}
