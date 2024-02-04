@@ -2,20 +2,41 @@ import UserWidget from "../widgets/Userwidget";
 import UserPosts from "../../Components/UserPosts";
 import Header from "../Dashboard/Header";
 import FriendList from "../../Components/FriendList";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { useState, useEffect } from "react";
+function ProfilePage(){
+    const {userId} = useParams();
+    const [user,setUser] = useState(null);
+    const getUser = async () => {
+        const response = await axios.get(`http://localhost:3001/users/${userId}`,{
+            headers : {
+                'Authorization': "Bearer " + localStorage.getItem('token').slice(1,-1),
+            }
+        })
+        setUser(response.data);
+    };
+    useEffect(()=>{
+        getUser();
+    },[]);
+    const xyz = JSON.parse(localStorage.getItem('user'));
 function ProfilePage({userId}){
     // const userId = JSON.parse(localStorage.getItem('user'));
 return (
     <div className="body" >
    <div>
-       <Header userId={userId._id} picturePath={userId.picturePath}></Header>
+       <Header userId={xyz._id} picturePath={xyz.picturePath}></Header>
    </div>
    <div className="widget" style={{marginTop:'60px'}}>
-       <UserWidget userId={userId._id} picturePath={userId.picturePath}/>
+       <UserWidget userId={userId} />
    </div>
    <div className="posts" style={{marginTop:'45px'}}>
-       <UserPosts />
+       <UserPosts userId={userId}/>
    </div>
-        <FriendList/>
+   {/* <div>
+       <FriendList />
+   </div> */}
+        
    </div>
 )
 }
