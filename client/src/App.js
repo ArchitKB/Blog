@@ -9,6 +9,7 @@ import ToggleBtn from "./ToggleBtn.jsx";
 import Landing from "./Pages/Landing/Landing.jsx";
 import UserPosts from "./Components/UserPosts.jsx";
 import ProfilePage from "./Pages/profilePage/ProfilePage.jsx";
+import UserProfile from "./Pages/UserProfile/UserProfile.jsx";
 
 function App() {
   const [user, setUser] = useState({});
@@ -99,6 +100,22 @@ function App() {
               //   toggle={toggle}
               // />
               <ProfilePage user={user}
+                 setUser={setUser}
+                 thememode={thememode}
+                 toggle={toggle} 
+              />
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              // <UserPosts
+              //   user={user}
+              //   setUser={setUser}
+              //   thememode={thememode}
+              //   toggle={toggle}
+              // />
+              <UserProfile user={user}
                  setUser={setUser}
                  thememode={thememode}
                  toggle={toggle} 

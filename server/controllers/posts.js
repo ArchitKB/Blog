@@ -93,6 +93,31 @@ export const getPost = async (req, res) => {
     });
   }
 };
+export const deletePost = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await Post.deleteOne({ _id: id });
+
+    if (result.deletedCount === 1) {
+      // If deletedCount is 1, it means the document was successfully deleted
+      res.status(200).json({
+        message: "Post deleted successfully",
+        result
+      });
+    } else {
+      // If deletedCount is not 1, it means the document was not found
+      res.status(404).json({
+        message: "Post not found",
+        result
+      });
+    }
+  } catch(err) {
+    // Catch any unexpected errors
+    res.status(500).json({
+      message: err.message,
+    });
+  }
+}
 
 //UPDATE
 export const likePost = async (req, res) => {

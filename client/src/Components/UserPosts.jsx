@@ -131,8 +131,27 @@ function Post(props){
         alignItems: 'left',
         gap:'2vw'
       };
+    // function handledelete(){
+    //         async function deletePost(){
+    //             try{
+    //                 let result= await axios.get(`http://localhost:3001/posts/${props.id}/delete
+    //             `, {
+    //                     headers: {
+    //                         'Authorization': "Bearer " + localStorage.getItem('token').slice(1,-1),
+    //                     },
+    //                 });
+    //             alert('post deleted successfully');
+    //             } catch(error){
+    //                 console.log(error);
+    //             }
+    
+    //         }
+    
+    //         deletePost();
+    // }
     return (
         <Wrapper>
+        {/* <button onClick={handledelete}>deleteyourpost</button> */}
           <h5>{userName}</h5>
           <p>{description}</p>
           <img

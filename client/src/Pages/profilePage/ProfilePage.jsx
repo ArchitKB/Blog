@@ -20,7 +20,6 @@ function ProfilePage(){
         getUser();
     },[]);
     const xyz = JSON.parse(localStorage.getItem('user'));
-function ProfilePage({userId}){
     // const userId = JSON.parse(localStorage.getItem('user'));
 return (
     <div className="body" >
