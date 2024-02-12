@@ -5,6 +5,7 @@ import {
   likePost,
   createComment,
   getPost,
+  deletePost
 } from "../controllers/posts.js";
 import { verifyToken } from "../middleware/auth.js";
 
