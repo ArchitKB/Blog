@@ -39,7 +39,7 @@ function Feed({userId}){
                 likes++;
             }
         });
-        return <Post key = {post._id} id = {post._id} userName = {post.firstName + ' ' + post.lastName}  description = {post.description} likes={likes} is_liked={is_liked} image ={post.picturePath} />
+        return <Post key = {post._id} id = {post._id} userId = {userId} userName = {post.firstName + ' ' + post.lastName}  description = {post.description} likes={likes} is_liked={is_liked} image ={post.picturePath} />
     });
     return(
         <ul>
@@ -131,27 +131,53 @@ function Post(props){
         alignItems: 'left',
         gap:'2vw'
       };
-    // function handledelete(){
-    //         async function deletePost(){
-    //             try{
-    //                 let result= await axios.get(`http://localhost:3001/posts/${props.id}/delete
-    //             `, {
-    //                     headers: {
-    //                         'Authorization': "Bearer " + localStorage.getItem('token').slice(1,-1),
-    //                     },
-    //                 });
-    //             alert('post deleted successfully');
-    //             } catch(error){
-    //                 console.log(error);
-    //             }
+    const postid = props.id;
+    function handledelete(){
+            async function deletePost(){
+                try{
+                    let result= await axios.delete(`http://localhost:3001/posts/delete/${postid}
+                `, {
+                        headers: {
+                            'Authorization': "Bearer " + localStorage.getItem('token').slice(1,-1),
+                        },
+                    });
+                    
+                alert('post deleted successfully');
+                } catch(error){
+                    console.log(error);
+                }
     
-    //         }
+            }
     
-    //         deletePost();
-    // }
+            deletePost();
+    }
+    function checking(id1,id2){
+        if(id1 === id2){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    const Deletebutton = ({check})=>{
+        return (
+            <div>
+        {check ? (
+            <button onClick={handledelete}>delete the post </button>
+        ):
+        (
+            <div></div>
+        )
+
+        }
+        </div>)
+    }
+    const id1 = JSON.parse(localStorage.getItem('user'))._id;
+    const id2 = props.userId;
+    let check = checking(id1,id2);
     return (
         <Wrapper>
-        {/* <button onClick={handledelete}>deleteyourpost</button> */}
+          <Deletebutton check ={check}/>
           <h5>{userName}</h5>
           <p>{description}</p>
           <img
