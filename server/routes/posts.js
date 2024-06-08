@@ -5,7 +5,8 @@ import {
   likePost,
   createComment,
   getPost,
-  deletePost
+  getComments,
+  deletePost,
 } from "../controllers/posts.js";
 import { verifyToken } from "../middleware/auth.js";
 
@@ -14,7 +15,8 @@ const router = express.Router();
 router.get("/", verifyToken, getFeedPosts);
 router.get("/:userId/posts", verifyToken, getUserPosts);
 router.get("/:postId", verifyToken, getPost);
-router.delete("/delete/:id",verifyToken,deletePost);
+router.get("/:postId/getComments", verifyToken, getComments);
+router.delete("/delete/:id", verifyToken, deletePost);
 
 //post
 router.post("/:postId/comment", verifyToken, createComment);

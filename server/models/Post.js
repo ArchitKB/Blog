@@ -28,10 +28,12 @@ const postSchema = mongoose.Schema(
       type: Map,
       of: Boolean,
     },
-    comment: {
-      type: Array,
-      default: [],
-    },
+    comments: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Comment",
+      },
+    ],
     sources: {
       type: Array,
       default: [],

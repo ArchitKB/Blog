@@ -30,12 +30,17 @@ export const createPost = async (req, res) => {
 };
 
 export const createComment = async (req, res) => {
+  res.status(201).send("done");
   try {
     const { userId, description } = req.body;
     const { postId } = req.params;
 
     const curPost = await Post.findById(postId);
     const curUser = await User.findById(userId);
+
+    if (!curUser || !curPost) {
+      return res.status(404).json({ message: "Post or user not found" });
+    }
 
     const newComment = new Comment({
       userId,
@@ -45,15 +50,35 @@ export const createComment = async (req, res) => {
       picturePath: curUser.picturePath,
     });
 
-    const comments = curPost.comment;
-    comments.push(newComment);
-
-    await Post.findByIdAndUpdate(postId, { comment: comments });
     await newComment.save();
+
+    curPost.comments.push(newComment._id);
+    await curPost.save();
 
     res.status(201).json(newComment);
   } catch (error) {
     res.status(409).json({
+      message: error.message,
+    });
+  }
+};
+
+export const getComments = async (req, res) => {
+  const { postId } = req.params;
+
+  try {
+    const curPost = await Post.findById(postId);
+
+    const comments = curPost.comments;
+
+    const commentObjPromise = comments.map(
+      async (commentId) => await Comment.findById(commentId)
+    );
+
+    const commentObj = await Promise.all(commentObjPromise);
+    res.status(200).json(commentObj);
+  } catch (error) {
+    res.status(404).json({
       message: error.message,
     });
   }

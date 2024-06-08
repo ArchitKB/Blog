@@ -4,7 +4,7 @@ import './Dashboard.css';
 import UserWidget from "../widgets/Userwidget";
 import Header from "./Header";
 import LikedButton from '@mui/icons-material/Favorite';
-import LikeButton from '@mui/icons-material/FavoriteBorder'
+import LikeButton from '@mui/icons-material/FavoriteBorder';
 import CommentButton from '@mui/icons-material/Comment';
 import AddButton from '@mui/icons-material/Add';
 import ReportIcon from '@mui/icons-material/Report';
